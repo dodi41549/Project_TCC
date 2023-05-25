@@ -1,18 +1,37 @@
-const mysql = require('mysql');
+//const mysql = require('mysql');
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 4000;
 
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "database_swalayan"
-});
+const corsOptions = {
+    origin: "http://localhost:4000"
+}
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log('Connected!');
-    con.query('select * from user', function (err, result){
-        if (err) throw err;
-        console.log(result);
+app.use(cors(corsOptions));
+
+const morgan = require('morgan');
+app.use(morgan('dev')); 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true}));
+
+const router = require('./routes');
+app.use(router); 
+
+// 404
+app.use((req, res, next) => {
+    return res.status(404).json({
+        message: "404 Not Found!"
     });
-    con.end();
 });
 
+// 500
+app.use((err, req, res, next) => {
+    return res.status(500).json({
+        message: err.message
+    });
+});
+
+app.listen(port, () => {
+    console.log(`running on port ${port}`);
+});

@@ -1,0 +1,10 @@
+### CREATE ITEM
+POST http://localhost:4000/item/create
+Content-Type: application/json
+
+{
+    "name": "Snack",
+    "description": "Snack Chiki",
+    "quantity": 10,
+    "price": 2000
+}
