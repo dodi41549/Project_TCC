@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style6.css">
+  <title>Toko Swalayan - Delete Item</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="create.html">Create</a></li>
+        <li><a href="show.html">Show</a></li>
+        <li><a href="edit.html">Edit</a></li>
+        <li><a href="delete.html" class="active">Delete</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <h1>Delete Item</h1>
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data dari tabel show akan ditampilkan di sini -->
+          <tr>
+            <td>Item 1</td>
+            <td>Description 1</td>
+            <td>10</td>
+            <td>$10.00</td>
+            <td><button class="delete-button" onclick="confirmDelete(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td>Item 2</td>
+            <td>Description 2</td>
+            <td>5</td>
+            <td>$15.00</td>
+            <td><button class="delete-button" onclick="confirmDelete(this)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="script2.js"></script>
+</body>
+
+</html>

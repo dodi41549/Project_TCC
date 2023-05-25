@@ -2,16 +2,13 @@ const express = require('express');
 const router = express.Router();
 const item = require('../controller/item');
 
-router.get('/', (req, res) => res.status(200).json({
-    message: "welcome to dashboard"
-}));
+router.get('/', (req, res) => {
+    return res.render('index');
+});
 
-router.post('/item/create', item.create);
-
-// router.get('/channels', channel.index); 
-// router.get('/channels/:channel_id', channel.show); 
-// router.post('/channels', channel.store); 
-// router.put('/channels/:channel_id', channel.update); 
-// router.delete('/channels/:channel_id', channel.destroy); 
+router.post('/item/create/', item.create);
+router.get('/item/show/', item.show);
+router.put('/item/edit/:id', item.update);
+// router.delete('/item/delete', item.destroy);
 
 module.exports = router;

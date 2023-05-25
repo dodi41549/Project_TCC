@@ -1,4 +1,3 @@
-//const mysql = require('mysql');
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -14,8 +13,12 @@ const morgan = require('morgan');
 app.use(morgan('dev')); 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true}));
+app.use(express.static(__dirname + '/views'));
 
 const router = require('./routes');
+
+app.set('view engine', 'ejs');
+
 app.use(router); 
 
 // 404

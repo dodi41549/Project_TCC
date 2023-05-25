@@ -21,6 +21,40 @@ Item.create = (newItem, result) => {
         
         result(null, {id: res.insertId, ...newItem});
     });
+};
+
+Item.getAll = (result) => {
+    const query = 'select * from item';
+
+    con.query(query, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            return result(err, null);
+        }
+
+        console.log('item:', res);
+        result(null, res);
+    });
+}
+
+Item.update = (id, item, result) => {
+    con.query(
+        'update item set description = ?, quantity = ?, price = ? where id = ?',
+        [item.description, item.quantity, item.price, id],
+        (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                return result(null, err);
+            }
+
+            if (res.affectedRows == 0) {
+                return result({ code: 404 }, null);
+            }
+
+            console.log('updated item:', {id: id, ...item});
+            result(null, {id: id, ...item});
+        }
+    );
 }
 
 module.exports = Item;

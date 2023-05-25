@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style5.css">
+  <title>Toko Swalayan - Edit Item</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="dashboard.html">Home</a></li>
+        <li><a href="create.html">Create</a></li>
+        <li><a href="show.html">Show</a></li>
+        <li><a href="edit.html" class="active">Edit</a></li>
+        <li><a href="delete.html">Delete</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <h1>Edit Item</h1>
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data dari tabel show akan ditampilkan di sini -->
+          <tr>
+            <td>Item 1</td>
+            <td>Description 1</td>
+            <td>10</td>
+            <td>$10.00</td>
+            <td><button class="edit-button">Edit</button></td>
+          </tr>
+          <tr>
+            <td>Item 2</td>
+            <td>Description 2</td>
+            <td>5</td>
+            <td>$15.00</td>
+            <td><button class="edit-button">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="edit-area" style="display: none;">
+        <h2>Edit Item</h2>
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity">
+          <label for="price">Price:</label>
+          <input type="text" id="price" name="price">
+          <button class="update-button">Update</button>
+          <td><button class="cancel-button">Cancel</button></td>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

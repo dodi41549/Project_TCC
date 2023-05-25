@@ -8,3 +8,17 @@ Content-Type: application/json
     "quantity": 10,
     "price": 2000
 }
+
+### GET ALL ITEM
+GET http://localhost:4000/item/show
+
+### UPDATE ITEM
+PUT http://localhost:4000/item/edit/1
+Content-Type: application/json
+
+{
+    "name": "Snack",
+    "description": "Snack Chiki",
+    "quantity": 10,
+    "price": 2000
+}
