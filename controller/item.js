@@ -1,4 +1,4 @@
-const Item = require('../models/model');
+const Item = require('../models/item');
 
 module.exports = {
     create: (req, res) => {
@@ -67,31 +67,27 @@ module.exports = {
         });
     },
 
-    destroy: async (req, res, next) => {
-        try{
-            const {channel_id} = req.params;
-
-            const deleted = await Channel.destroy({
-                where:{
-                    id: channel_id
-                }
-            });
-
-            if(!deleted){
-                return res.status(404).json({
+    destroy: (req, res) => {
+        Item.destroy(req.params.id, (err, data) => {
+            if(err && err.code == 404) {
+                return res.status(404).send({
                     status: false,
-                    message: `can't find channel with id ${channel_id}!`,
+                    message: 'ID is not found!',
                     data: null
                 });
             }
 
-            return res.status(200).json({
-                status: true,
-                message: 'success',
-                data: deleted
-            })
-        } catch(err){
-            next(err);
-        }
+            if(err){
+                return res.status(500).json({
+                    status: false,
+                    message: err.message,
+                    data: null
+                });
+            }
+            res.send({
+                message: 'item deleted successfully!',
+                data: data
+            });
+        });
     }
 };

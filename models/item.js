@@ -35,12 +35,12 @@ Item.getAll = (result) => {
         console.log('item:', res);
         result(null, res);
     });
-}
+};
 
 Item.update = (id, item, result) => {
     con.query(
         'update item set description = ?, quantity = ?, price = ? where id = ?',
-        [item.description, item.quantity, item.price, id],
+        [item.name, item.description, item.quantity, item.price, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -55,6 +55,22 @@ Item.update = (id, item, result) => {
             result(null, {id: id, ...item});
         }
     );
-}
+};
+
+Item.destroy = (id, result) => {
+    con.query('delete from item where id = ?', id, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            return result(null, err);
+        }
+
+        if (res.affectedRows == 0) {
+            return result({ code: 404 }, null);
+        }
+
+        console.log("deleted item with id: ", id);
+        result(null, res);
+    });
+};
 
 module.exports = Item;

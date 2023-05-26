@@ -1,10 +1,19 @@
+### Login admin
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin123"
+}
+
 ### CREATE ITEM
 POST http://localhost:4000/item/create
 Content-Type: application/json
 
 {
-    "name": "Snack",
-    "description": "Snack Chiki",
+    "name": "Test",
+    "description": "Testing",
     "quantity": 10,
     "price": 2000
 }
@@ -22,3 +31,6 @@ Content-Type: application/json
     "quantity": 10,
     "price": 2000
 }
+
+### DELETE ITEM
+DELETE http://localhost:4000/item/delete/6
