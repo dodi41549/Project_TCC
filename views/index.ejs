@@ -17,14 +17,14 @@
       <button type="submit">Login</button>
     </form>
   </div>
-<!--
-  <% if(errors == false){ %>
-
-<% } %>
-  -->
 <% if(errors == true){ %>
 <script>
   alert("Username atau password salah");
+</script>
+<% } %>
+<% if(typeof(logout) == true){ %>
+<script>
+  alert("Berhasil Logout");
 </script>
 <% } %>
 

@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    display: block;
+  }
+  
+  .sidebar a:hover {
+    background-color: #555;
+  }
+  
+  .sidebar .active {
+    background-color: #4CAF50;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .edit-button {
+    background-color: #36f439;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: #17ff26;
+  }
+  
+  .edit-area {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  .edit-area h2 {
+    color: #333;
+  }
+  
+  .edit-area form {
+    margin-top: 10px;
+  }
+  
+  .edit-area label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .edit-area input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .update-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+  
+  .update-button:hover {
+    background-color: #45a049;
+  }
+
+  .cancel-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+  
+  .cancel-button:hover {
+    background-color: #45a049;
+  }
+  

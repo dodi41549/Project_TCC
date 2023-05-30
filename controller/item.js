@@ -19,8 +19,9 @@ module.exports = {
                     data: null
                 });
             }
-            res.send(data);
+            return data;
         });
+        res.redirect('/show');
     },
 
     show: (req, res) => {
@@ -32,7 +33,59 @@ module.exports = {
                     data: null
                 });
             }
-            res.send(data);
+            console.log(data);
+            return res.render('show', {items: data});
+        });
+    },
+
+    showId: (req, res) => {
+        Item.getId(req.params.id, (err, data) => {
+            console.log(req.params.id);
+            if (err && err.code == 404) {
+                return res.status(404).send({
+                    status: false,
+                    message: 'ID is not found!',
+                    data: null
+                });
+            }
+
+            if(err){
+                return res.status(500).json({
+                    status: false,
+                    message: err.message,
+                    data: null
+                });
+            }
+            console.log(data);
+            res.render('edititem', {items: data});
+        });
+    },
+
+    showEdit: (req, res) => {
+        Item.getAll((err, data) => {
+            if(err){
+                return res.status(500).json({
+                    status: false,
+                    message: err.message,
+                    data: null
+                });
+            }
+            console.log(data);
+            return res.render('edit', {items: data});
+        });
+    },
+
+    showDelete: (req, res) => {
+        Item.getAll((err, data) => {
+            if(err){
+                return res.status(500).json({
+                    status: false,
+                    message: err.message,
+                    data: null
+                });
+            }
+            console.log(data);
+            res.render('delete', {items: data});
         });
     },
 
@@ -63,8 +116,9 @@ module.exports = {
                     data: null
                 });
             }
-            res.send(data);
+            return data;
         });
+        res.redirect('/show');
     },
 
     destroy: (req, res) => {
@@ -84,10 +138,8 @@ module.exports = {
                     data: null
                 });
             }
-            res.send({
-                message: 'item deleted successfully!',
-                data: data
-            });
+            console.log('deleted successfully!');
         });
+        res.redirect('/show');
     }
 };

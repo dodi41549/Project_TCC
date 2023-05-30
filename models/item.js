@@ -23,6 +23,22 @@ Item.create = (newItem, result) => {
     });
 };
 
+Item.getId = (id, result) => {
+    con.query(`select * from item where id = ${id}`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            return result(err, null);
+        }
+
+        if (res.affectedRows == 0) {
+            return result({ code: 404 }, null);
+        }
+
+        console.log('found item: ', res[0]);
+        result(null, res[0]);
+    });
+};
+
 Item.getAll = (result) => {
     const query = 'select * from item';
 
@@ -39,7 +55,7 @@ Item.getAll = (result) => {
 
 Item.update = (id, item, result) => {
     con.query(
-        'update item set description = ?, quantity = ?, price = ? where id = ?',
+        'update item set name = ?, description = ?, quantity = ?, price = ? where id = ?',
         [item.name, item.description, item.quantity, item.price, id],
         (err, res) => {
             if (err) {
